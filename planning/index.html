@@ -4,12 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Planning Scenarios — Carpinteria Water Supply Exhibit</title>
-  <link rel="stylesheet" href="../css/exhibit.css?v=5" />
+  <link rel="stylesheet" href="../css/exhibit.css?v=6" />
 </head>
 <body>
   <header class="site-header">
     <div class="site-header-inner">
       <h1 class="site-title">Carpinteria Water Supply Exhibit</h1>
+      <p class="site-tagline">Provisional supply-data reference from the 2025 UWMP</p>
       <nav class="figure-panels" aria-label="Exhibit figures">
         <a class="figure-panel" href="../">
           <span class="eyebrow">Figure 1</span>
@@ -37,10 +38,10 @@
     <section class="prose">
       <p>
         Three entitlements (Cachuma, State Water, and basin groundwater) do not arrive
-        in fixed shares. Historical groundwater use ranges widely year to year, and
-        State Water can fall sharply in a single dry year. CAPP adds about
-        <strong>1,000 AFY</strong> of purified water injected into the basin —
-        basin replenishment, not a fourth surface import pipe.
+        in fixed shares — see Historical years such as <strong>2015</strong> and
+        <strong>2018</strong>. State Water can fall sharply in a single dry year.
+        CAPP adds about <strong>1,000 AFY</strong> of purified water injected into the
+        basin — basin replenishment, not a fourth surface import pipe.
       </p>
       <p>
         The buttons below show how the post-CAPP portfolio is projected to meet
@@ -81,8 +82,12 @@
 
     <section class="hud" aria-labelledby="hud-title">
       <h2 id="hud-title">Projected supply, 2030 (acre-feet / year)</h2>
+      <p class="accounting-note">
+        Dry-year UWMP tables net recycled out of groundwater; the diagram shows well
+        production and CAPP injection separately so recycled isn’t counted twice.
+      </p>
       <dl>
-        <dt>Groundwater <span class="hud-hint">(diagram ribbon)</span></dt>
+        <dt>Groundwater <span class="hud-hint">(diagram / well production)</span></dt>
         <dd id="hud-gw">—</dd>
         <dt>Cachuma</dt>
         <dd id="hud-cachuma">—</dd>
@@ -107,9 +112,11 @@
       <h2>How to read this page</h2>
       <p>
         Normal year is a surplus / carryover story. Single dry year shows thin State Water
-        with CAPP and groundwater balancing. Five-year average shows thinned imports,
-        higher groundwater, and a stable CAPP injection loop. Numbers are planning values
-        from UWMP Tables 5-1, 5-2, and 5-4 — not Figure 4-1 historical actuals.
+        with CAPP and groundwater balancing. Five-year drought uses Table 5-4 — the
+        <em>average</em> of the driest five-year sequence, not a single year — with
+        thinned imports, higher groundwater, and a stable CAPP injection loop. Numbers
+        are planning values from UWMP Tables 5-1, 5-2, and 5-4 — not Figure 4-1
+        historical actuals.
       </p>
       <ul>
         <li><a href="https://www.cvwd.net/capp">CAPP project hub</a> — public project narrative</li>
@@ -131,9 +138,16 @@
         Not an official Carpinteria Valley Water District publication.
         For official data see <a href="https://www.cvwd.net">cvwd.net</a>.
       </p>
+      <p class="footer-method">
+        Authoring / data method:
+        <a href="https://github.com/oxremy/RESOURCES-carpinteria-water-supply-exhibit"
+          >RESOURCES-carpinteria-water-supply-exhibit</a
+        >
+        (AF JSON and Blender layout scripts). Not District-official.
+      </p>
     </div>
   </footer>
 
-  <script src="../js/planning.js?v=4" defer></script>
+  <script src="../js/planning.js?v=5" defer></script>
 </body>
 </html>

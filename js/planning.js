@@ -110,15 +110,16 @@
     hud.cite.textContent =
       `Scenario: ${row.label} · Planning year ${row.planning_year} · UWMP Table ${row.table} · Projected · Provisional exhibit`;
 
+    // Keep scenario footnotes short — the HUD accounting-note covers dual-total logic.
     const notes = [];
-    if (Math.round(totalDiagram) !== Math.round(Number(row.supply_af) || 0)) {
-      notes.push(
-        `Diagram TOTAL is the trunk ribbon sum (groundwater + Cachuma + SWP). CAPP injection is drawn as its own loop and is counted in the UWMP supply total (${fmt(row.supply_af)}), not added again into the diagram TOTAL.`
-      );
-    }
     if (Math.round(gwDiagram) !== Math.round(gwTable)) {
       notes.push(
-        `UWMP Table ${row.table} lists groundwater ${fmt(gwTable)} as the residual after recycled; the diagram groundwater ribbon is well production ${fmt(gwDiagram)} (= table GW + CAPP).`
+        `Table ${row.table} groundwater residual: ${fmt(gwTable)} (after recycled).`
+      );
+    }
+    if (Math.round(totalDiagram) !== Math.round(Number(row.supply_af) || 0)) {
+      notes.push(
+        `UWMP supply total (${fmt(row.supply_af)}) includes CAPP; diagram total is the trunk ribbons only.`
       );
     }
     if (
@@ -130,7 +131,7 @@
       ) !== Math.round(Number(row.supply_af) || 0)
     ) {
       notes.push(
-        `UWMP printed supply total (${fmt(row.supply_af)}) differs by 1 AF from the sum of published source columns — exhibit keeps the table total for citation and the diagram total for the image.`
+        `UWMP printed supply total differs by 1 AF from the source-column sum; exhibit cites the table total.`
       );
     }
     hud.note.textContent = notes.join(" ");
@@ -153,7 +154,7 @@
       placeholder.hidden = false;
     };
     img.alt = `Planning supply Sankey — ${byId.get(id)?.label || id}`;
-    img.src = `${path}?s=${encodeURIComponent(id)}&v=4`;
+    img.src = `${path}?s=${encodeURIComponent(id)}&v=5`;
   }
 
   function setSelectedScenario(id) {
@@ -172,7 +173,7 @@
   defEl.textContent = DEFINITIONS.normal_wy;
   showScenarioImage("normal_wy");
 
-  fetch("../data/supply_planning_scenarios.json?v=4")
+  fetch("../data/supply_planning_scenarios.json?v=5")
     .then((r) => {
       if (!r.ok) throw new Error(`Failed to load planning JSON (${r.status})`);
       return r.json();
