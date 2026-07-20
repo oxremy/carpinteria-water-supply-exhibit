@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
   <title>Historical Supplies — Carpinteria Water Supply Exhibit</title>
-  <link rel="stylesheet" href="css/exhibit.css" />
+  <link rel="stylesheet" href="css/exhibit.css?v=3" />
 </head>
 <body>
   <header class="site-header">
@@ -35,10 +36,15 @@
     <p class="page-lede">UWMP Figure 4-1. Reported actuals — not planning projections.</p>
 
     <div class="figure-stage" id="figure-stage">
-      <img id="sankey-img" alt="Historical supply Sankey for selected year" hidden />
-      <div class="figure-placeholder" id="sankey-placeholder">
-        Sankey still for <strong id="placeholder-year">2025</strong> not imported yet.<br />
-        Place file at <code>assets/historical/sankey-<span id="placeholder-file-year">2025</span>.png</code>
+      <img
+        id="sankey-img"
+        src="assets/historical/sankey-2025.png"
+        alt="Historical water supply Sankey diagram for 2025"
+        width="1600"
+        height="1000"
+      />
+      <div class="figure-placeholder" id="sankey-placeholder" hidden>
+        Could not load Sankey still for <strong id="placeholder-year">2025</strong>.
       </div>
     </div>
 
@@ -49,7 +55,23 @@
         id="year-buttons"
         role="group"
         aria-labelledby="year-label"
-      ></div>
+      >
+        <button type="button" class="year-btn" data-year="2011">2011</button>
+        <button type="button" class="year-btn" data-year="2012">2012</button>
+        <button type="button" class="year-btn" data-year="2013">2013</button>
+        <button type="button" class="year-btn" data-year="2014">2014</button>
+        <button type="button" class="year-btn" data-year="2015">2015</button>
+        <button type="button" class="year-btn" data-year="2016">2016</button>
+        <button type="button" class="year-btn" data-year="2017">2017</button>
+        <button type="button" class="year-btn" data-year="2018">2018</button>
+        <button type="button" class="year-btn" data-year="2019">2019</button>
+        <button type="button" class="year-btn" data-year="2020">2020</button>
+        <button type="button" class="year-btn" data-year="2021">2021</button>
+        <button type="button" class="year-btn" data-year="2022">2022</button>
+        <button type="button" class="year-btn" data-year="2023">2023</button>
+        <button type="button" class="year-btn" data-year="2024">2024</button>
+        <button type="button" class="year-btn" data-year="2025" aria-pressed="true">2025</button>
+      </div>
     </div>
 
     <section class="hud" aria-labelledby="hud-title">
@@ -72,8 +94,7 @@
     <section class="prose">
       <p>
         Ribbon widths and the numbers above are driven by acre-feet transcribed from
-        public UWMP tables. Still images will swap by year once PNGs are imported
-        into this package.
+        public UWMP tables. Select a year to swap the Sankey still and HUD values.
       </p>
     </section>
 
@@ -93,6 +114,6 @@
     </div>
   </footer>
 
-  <script src="js/historical.js" defer></script>
+  <script src="js/historical.js?v=3" defer></script>
 </body>
 </html>

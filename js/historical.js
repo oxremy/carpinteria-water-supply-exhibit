@@ -3,11 +3,10 @@
   const YEAR_MAX = 2025;
   const DEFAULT_YEAR = 2025;
 
-  const yearButtonsEl = document.getElementById("year-buttons");
   const img = document.getElementById("sankey-img");
   const placeholder = document.getElementById("sankey-placeholder");
   const placeholderYear = document.getElementById("placeholder-year");
-  const placeholderFileYear = document.getElementById("placeholder-file-year");
+  const yearButtons = [...document.querySelectorAll(".year-btn[data-year]")];
 
   const hud = {
     gw: document.getElementById("hud-gw"),
@@ -20,30 +19,13 @@
 
   /** @type {Map<number, object>} */
   const byYear = new Map();
-  /** @type {HTMLButtonElement[]} */
-  let yearButtons = [];
   let selectedYear = DEFAULT_YEAR;
+  let imgToken = 0;
 
   const fmt = (n) =>
     n == null || Number.isNaN(n) ? "—" : `${Math.round(n).toLocaleString("en-US")} AF`;
 
   const pngPath = (year) => `assets/historical/sankey-${year}.png`;
-
-  function buildYearButtons() {
-    const frag = document.createDocumentFragment();
-    for (let year = YEAR_MIN; year <= YEAR_MAX; year += 1) {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "year-btn";
-      btn.dataset.year = String(year);
-      btn.textContent = String(year);
-      btn.setAttribute("aria-pressed", "false");
-      btn.addEventListener("click", () => setSelectedYear(year));
-      frag.appendChild(btn);
-    }
-    yearButtonsEl.replaceChildren(frag);
-    yearButtons = [...yearButtonsEl.querySelectorAll(".year-btn")];
-  }
 
   function updateYearButtons() {
     yearButtons.forEach((btn) => {
@@ -71,24 +53,24 @@
       `Year ${row.year} · Source: UWMP Figure 4-1 / Table 4-3 · Historical actual · Provisional exhibit`;
   }
 
-  function showPngOrPlaceholder(year) {
-    placeholderYear.textContent = String(year);
-    placeholderFileYear.textContent = String(year);
-
+  function showYearImage(year) {
+    const token = ++imgToken;
     const path = pngPath(year);
-    const probe = new Image();
-    probe.onload = () => {
-      img.src = path;
-      img.alt = `Historical water supply Sankey diagram for ${year}`;
+    placeholderYear.textContent = String(year);
+
+    img.onload = () => {
+      if (token !== imgToken) return;
       img.hidden = false;
       placeholder.hidden = true;
     };
-    probe.onerror = () => {
-      img.removeAttribute("src");
+    img.onerror = () => {
+      if (token !== imgToken) return;
       img.hidden = true;
       placeholder.hidden = false;
     };
-    probe.src = path;
+    img.alt = `Historical water supply Sankey diagram for ${year}`;
+    // Cache-bust so a prior failed/cached response cannot stick.
+    img.src = `${path}?y=${year}`;
   }
 
   function setSelectedYear(year) {
@@ -96,23 +78,27 @@
     selectedYear = y;
     updateYearButtons();
     updateHud(byYear.get(y));
-    showPngOrPlaceholder(y);
+    showYearImage(y);
   }
 
-  buildYearButtons();
+  yearButtons.forEach((btn) => {
+    btn.addEventListener("click", () => setSelectedYear(btn.dataset.year));
+  });
 
-  fetch("data/supply_historical.json")
+  // Paint controls/image immediately; fill HUD when JSON arrives.
+  setSelectedYear(DEFAULT_YEAR);
+
+  fetch(`data/supply_historical.json?v=3`)
     .then((r) => {
       if (!r.ok) throw new Error(`Failed to load historical JSON (${r.status})`);
       return r.json();
     })
     .then((data) => {
       (data.years || []).forEach((row) => byYear.set(row.year, row));
-      setSelectedYear(DEFAULT_YEAR);
+      updateHud(byYear.get(selectedYear));
     })
     .catch((err) => {
       console.error(err);
       hud.cite.textContent = "Could not load supply_historical.json";
-      setSelectedYear(DEFAULT_YEAR);
     });
 })();

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Planning Scenarios — Carpinteria Water Supply Exhibit</title>
-  <link rel="stylesheet" href="../css/exhibit.css" />
+  <link rel="stylesheet" href="../css/exhibit.css?v=3" />
 </head>
 <body>
   <header class="site-header">
@@ -66,10 +66,16 @@
     </div>
 
     <div class="figure-stage" id="figure-stage">
-      <img id="scenario-img" alt="Planning scenario Sankey" hidden />
-      <div class="figure-placeholder" id="scenario-placeholder">
-        Scenario still not imported yet.<br />
-        Place file at <code id="placeholder-path">assets/planning/scenario-normal.png</code>
+      <img
+        id="scenario-img"
+        src="../assets/planning/scenario-normal.png"
+        alt="Planning supply Sankey — Normal water year"
+        width="1600"
+        height="1000"
+      />
+      <div class="figure-placeholder" id="scenario-placeholder" hidden>
+        Could not load scenario still.
+        <code id="placeholder-path">assets/planning/scenario-normal.png</code>
       </div>
     </div>
 
@@ -125,6 +131,6 @@
     </div>
   </footer>
 
-  <script src="../js/planning.js" defer></script>
+  <script src="../js/planning.js?v=3" defer></script>
 </body>
 </html>

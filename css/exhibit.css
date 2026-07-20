@@ -176,6 +176,10 @@ a:hover {
   line-height: 1.45;
 }
 
+.figure-placeholder[hidden] {
+  display: none;
+}
+
 .figure-placeholder code {
   font-size: 0.8rem;
   background: #e2e7ec;
