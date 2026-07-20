@@ -131,7 +131,7 @@
       ) !== Math.round(Number(row.supply_af) || 0)
     ) {
       notes.push(
-        `UWMP printed supply total differs by 1 AF from the source-column sum; exhibit cites the table total.`
+        `UWMP printed supply total differs by 1 AF from the source-column sum; exhibit uses the column sum.`
       );
     }
     hud.note.textContent = notes.join(" ");
@@ -173,7 +173,7 @@
   defEl.textContent = DEFINITIONS.normal_wy;
   showScenarioImage("normal_wy");
 
-  fetch("../data/supply_planning_scenarios.json?v=5")
+  fetch("../data/supply_planning_scenarios.json?v=6")
     .then((r) => {
       if (!r.ok) throw new Error(`Failed to load planning JSON (${r.status})`);
       return r.json();

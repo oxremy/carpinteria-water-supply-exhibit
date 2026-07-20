@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Planning Scenarios — Carpinteria Water Supply Exhibit</title>
-  <link rel="stylesheet" href="../css/exhibit.css?v=6" />
+  <link rel="stylesheet" href="../css/exhibit.css?v=7" />
 </head>
 <body>
   <header class="site-header">
@@ -83,8 +83,12 @@
     <section class="hud" aria-labelledby="hud-title">
       <h2 id="hud-title">Projected supply, 2030 (acre-feet / year)</h2>
       <p class="accounting-note">
-        Dry-year UWMP tables net recycled out of groundwater; the diagram shows well
-        production and CAPP injection separately so recycled isn’t counted twice.
+        Two totals are intentional. <strong>UWMP supply total</strong> is the Table 5
+        portfolio (includes CAPP). <strong>Diagram total</strong> is the three trunks
+        only — CAPP is basin injection, not a fourth ribbon. Normal year: the table
+        lists surplus availability, so UWMP supply exceeds the diagram. Dry years:
+        tables net recycled out of groundwater; the diagram restores well production
+        so recycled isn’t counted twice.
       </p>
       <dl>
         <dt>Groundwater <span class="hud-hint">(diagram / well production)</span></dt>
@@ -148,6 +152,6 @@
     </div>
   </footer>
 
-  <script src="../js/planning.js?v=5" defer></script>
+  <script src="../js/planning.js?v=6" defer></script>
 </body>
 </html>
