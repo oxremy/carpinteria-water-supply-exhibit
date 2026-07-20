@@ -11,6 +11,7 @@
   --warn: #6b5a2e;
   --warn-bg: #f7f1e2;
   --max: 44rem;
+  --figure-max: calc(var(--max) * 1.5);
   --pad: 1.25rem;
 }
 
@@ -144,7 +145,12 @@ a:hover {
 }
 
 .figure-stage {
+  /* 1.5× content lane; centered; header/HUD/prose stay at --max */
+  --figure-width: min(var(--figure-max), calc(100vw - 2 * var(--pad)));
+  width: var(--figure-width);
+  max-width: none;
   margin: 0 0 1rem;
+  margin-left: calc(50% - var(--figure-width) / 2);
   background: #eef1f4;
   border: 1px solid var(--line);
   border-radius: 4px;
