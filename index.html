@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Historical Supplies — Carpinteria Water Supply Exhibit</title>
+  <link rel="stylesheet" href="css/exhibit.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1 class="site-title">Carpinteria Water Supply Exhibit</h1>
+      <nav class="figure-panels" aria-label="Exhibit figures">
+        <a class="figure-panel" href="./" aria-current="page">
+          <span class="eyebrow">Figure 1</span>
+          <span class="label">Historical supplies</span>
+          <span class="blurb">Reported actuals, 2011–2025</span>
+        </a>
+        <a class="figure-panel" href="planning/">
+          <span class="eyebrow">Figure 2</span>
+          <span class="label">Planning scenarios</span>
+          <span class="blurb">UWMP 2030 projections with CAPP</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <p class="disclaimer-strip">
+      Reported historical actuals from the 2025 UWMP (Figure 4-1 / related tables).
+      Provisional communication draft — not an official CVWD publication.
+    </p>
+
+    <h2 class="page-subhead">Historical supplies, 2011–2025</h2>
+    <p class="page-lede">UWMP Figure 4-1. Reported actuals — not planning projections.</p>
+
+    <div class="figure-stage" id="figure-stage">
+      <img id="sankey-img" alt="Historical supply Sankey for selected year" hidden />
+      <div class="figure-placeholder" id="sankey-placeholder">
+        Sankey still for <strong id="placeholder-year">2025</strong> not imported yet.<br />
+        Place file at <code>assets/historical/sankey-<span id="placeholder-file-year">2025</span>.png</code>
+      </div>
+    </div>
+
+    <div class="controls">
+      <span class="controls-label" id="year-label">Year</span>
+      <div
+        class="year-buttons"
+        id="year-buttons"
+        role="group"
+        aria-labelledby="year-label"
+      ></div>
+    </div>
+
+    <section class="hud" aria-labelledby="hud-title">
+      <h2 id="hud-title">Supply (acre-feet)</h2>
+      <dl>
+        <dt>Groundwater</dt>
+        <dd id="hud-gw">—</dd>
+        <dt>Cachuma (+ ID#1)</dt>
+        <dd id="hud-cachuma">—</dd>
+        <dt>State Water</dt>
+        <dd id="hud-swp">—</dd>
+        <dt>Total supply</dt>
+        <dd id="hud-total">—</dd>
+        <dt>Demand</dt>
+        <dd id="hud-demand">—</dd>
+      </dl>
+      <p class="cite" id="hud-cite">Source: UWMP Figure 4-1 / Table 4-3 · Historical actual · Provisional exhibit</p>
+    </section>
+
+    <section class="prose">
+      <p>
+        Ribbon widths and the numbers above are driven by acre-feet transcribed from
+        public UWMP tables. Still images will swap by year once PNGs are imported
+        into this package.
+      </p>
+    </section>
+
+    <p class="cross-link">
+      <a href="planning/">See Planning page for 2030 UWMP scenarios →</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>
+        Provisional communication draft prepared from public CVWD documents.
+        Historical figures are reported actuals from UWMP Figure 4-1 and tables.
+        Not an official Carpinteria Valley Water District publication.
+        For official data see <a href="https://www.cvwd.net">cvwd.net</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/historical.js" defer></script>
+</body>
+</html>

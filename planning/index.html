@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planning Scenarios — Carpinteria Water Supply Exhibit</title>
+  <link rel="stylesheet" href="../css/exhibit.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1 class="site-title">Carpinteria Water Supply Exhibit</h1>
+      <nav class="figure-panels" aria-label="Exhibit figures">
+        <a class="figure-panel" href="../">
+          <span class="eyebrow">Figure 1</span>
+          <span class="label">Historical supplies</span>
+          <span class="blurb">Reported actuals, 2011–2025</span>
+        </a>
+        <a class="figure-panel" href="./" aria-current="page">
+          <span class="eyebrow">Figure 2</span>
+          <span class="label">Planning scenarios</span>
+          <span class="blurb">UWMP 2030 projections with CAPP</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <p class="disclaimer-strip">
+      UWMP Section 5 planning scenarios for 2030 — projections, not historical actuals.
+      Provisional communication draft — not an official CVWD publication.
+    </p>
+
+    <h2 class="page-subhead">Planned supply portfolio, 2030</h2>
+    <p class="page-lede">UWMP Section 5. Projections — not historical actuals.</p>
+
+    <section class="prose">
+      <p>
+        Three entitlements (Cachuma, State Water, and basin groundwater) do not arrive
+        in fixed shares. Historical groundwater use ranges widely year to year, and
+        State Water can fall sharply in a single dry year. CAPP adds about
+        <strong>1,000 AFY</strong> of purified water injected into the basin —
+        basin replenishment, not a fourth surface import pipe.
+      </p>
+      <p>
+        The buttons below show how the post-CAPP portfolio is projected to meet
+        <strong>2030</strong> demand under the three UWMP-required water-year scenarios.
+        UWMP conclusion: CVWD expects to meet demands under all three.
+      </p>
+    </section>
+
+    <div class="controls">
+      <label id="scenario-label">Scenario</label>
+      <div class="scenario-grid" role="group" aria-labelledby="scenario-label">
+        <button type="button" class="scenario-btn" data-scenario="normal_wy" aria-pressed="true">
+          Normal water year
+        </button>
+        <button type="button" class="scenario-btn" data-scenario="single_dry" aria-pressed="false">
+          Single dry year
+        </button>
+        <button type="button" class="scenario-btn" data-scenario="five_year_avg" aria-pressed="false">
+          Five-year drought (avg)
+        </button>
+      </div>
+      <p class="scenario-def" id="scenario-def"></p>
+    </div>
+
+    <div class="figure-stage" id="figure-stage">
+      <img id="scenario-img" alt="Planning scenario Sankey" hidden />
+      <div class="figure-placeholder" id="scenario-placeholder">
+        Scenario still not imported yet.<br />
+        Place file at <code id="placeholder-path">assets/planning/scenario-normal.png</code>
+      </div>
+    </div>
+
+    <section class="hud" aria-labelledby="hud-title">
+      <h2 id="hud-title">Projected supply, 2030 (acre-feet / year)</h2>
+      <dl>
+        <dt>Groundwater</dt>
+        <dd id="hud-gw">—</dd>
+        <dt>Cachuma</dt>
+        <dd id="hud-cachuma">—</dd>
+        <dt>State Water</dt>
+        <dd id="hud-swp">—</dd>
+        <dt>Recycled (CAPP)</dt>
+        <dd id="hud-recycled">—</dd>
+        <dt>Supply total</dt>
+        <dd id="hud-supply">—</dd>
+        <dt>Demand</dt>
+        <dd id="hud-demand">—</dd>
+        <dt>Balance</dt>
+        <dd id="hud-balance">—</dd>
+      </dl>
+      <p class="cite" id="hud-cite">Source: UWMP Table 5-x · Projected · Provisional exhibit</p>
+    </section>
+
+    <section class="prose">
+      <h2>How to read this page</h2>
+      <p>
+        Normal year is a surplus / carryover story. Single dry year shows thin State Water
+        with CAPP and groundwater balancing. Five-year average shows thinned imports,
+        higher groundwater, and a stable CAPP injection loop. Numbers are planning values
+        from UWMP Tables 5-1, 5-2, and 5-4 — not Figure 4-1 historical actuals.
+      </p>
+      <ul>
+        <li><a href="https://www.cvwd.net/capp">CAPP project hub</a> — public project narrative</li>
+        <li><a href="https://www.cvwd.net">cvwd.net</a> — official District materials</li>
+      </ul>
+    </section>
+
+    <p class="cross-link">
+      <a href="../">← See Historical page for 2011–2025 actuals</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>
+        Provisional communication draft prepared from public CVWD documents
+        (2025 UWMP Section 5, CAPP materials, and related studies).
+        Scenario figures are projected planning values, not reported actuals.
+        Not an official Carpinteria Valley Water District publication.
+        For official data see <a href="https://www.cvwd.net">cvwd.net</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="../js/planning.js" defer></script>
+</body>
+</html>

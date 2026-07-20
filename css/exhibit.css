@@ -1,0 +1,373 @@
+/* Carpinteria Water Supply Exhibit — simple article layout (CAPP-style content column) */
+
+:root {
+  --ink: #1a1f24;
+  --muted: #5a6570;
+  --line: #d7dde3;
+  --paper: #f7f8fa;
+  --surface: #ffffff;
+  --accent: #1f5f7a;
+  --accent-soft: #e8f1f5;
+  --warn: #6b5a2e;
+  --warn-bg: #f7f1e2;
+  --max: 44rem;
+  --pad: 1.25rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 17px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 1.5rem var(--pad) 1.25rem;
+}
+
+.site-header-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.site-title {
+  margin: 0 0 1rem;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.figure-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.figure-panel {
+  display: block;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.figure-panel:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.figure-panel[aria-current="page"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.figure-panel .eyebrow {
+  display: block;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.figure-panel .label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.figure-panel .blurb {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.page {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1.25rem var(--pad) 3rem;
+}
+
+.disclaimer-strip {
+  margin: 0 0 1.25rem;
+  padding: 0.65rem 0.85rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--warn);
+  background: var(--warn-bg);
+  border-left: 3px solid #c4a45a;
+}
+
+.page-subhead {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.page-lede {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.figure-stage {
+  margin: 0 0 1rem;
+  background: #eef1f4;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.figure-stage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #eef1f4;
+}
+
+.figure-stage img[hidden] {
+  display: none;
+}
+
+.figure-placeholder {
+  padding: 1.5rem;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.figure-placeholder code {
+  font-size: 0.8rem;
+  background: #e2e7ec;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+
+.controls {
+  margin: 0 0 1.25rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.controls-label,
+.controls label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.year-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.2rem;
+  width: 100%;
+}
+
+.year-btn {
+  appearance: none;
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0.35rem 0;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+}
+
+.year-btn:hover {
+  border-color: var(--accent);
+}
+
+.year-btn[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.scenario-btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 4px;
+  padding: 0.45rem 0.7rem;
+  font: inherit;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.scenario-btn:hover {
+  border-color: var(--accent);
+}
+
+.scenario-btn[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+@media (min-width: 560px) {
+  .scenario-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.scenario-btn {
+  text-align: left;
+  min-height: 3.2rem;
+}
+
+.scenario-def {
+  margin: 0.55rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.hud {
+  margin: 0 0 1.5rem;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.92rem;
+}
+
+.hud h2 {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hud dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.3rem 1rem;
+  margin: 0;
+}
+
+.hud dt {
+  color: var(--muted);
+}
+
+.hud dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.hud .cite {
+  margin: 0.75rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.prose h2 {
+  margin: 1.75rem 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.prose p {
+  margin: 0 0 0.9rem;
+}
+
+.prose ul {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+}
+
+.cross-link {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.92rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  padding: 1.25rem var(--pad) 2rem;
+}
+
+.site-footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.site-footer-inner p {
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .figure-panels {
+    grid-template-columns: 1fr;
+  }
+
+  html {
+    font-size: 16px;
+  }
+}
