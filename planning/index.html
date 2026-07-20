@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Planning Scenarios — Carpinteria Water Supply Exhibit</title>
-  <link rel="stylesheet" href="../css/exhibit.css?v=3" />
+  <link rel="stylesheet" href="../css/exhibit.css?v=4" />
 </head>
 <body>
   <header class="site-header">
@@ -82,22 +82,25 @@
     <section class="hud" aria-labelledby="hud-title">
       <h2 id="hud-title">Projected supply, 2030 (acre-feet / year)</h2>
       <dl>
-        <dt>Groundwater</dt>
+        <dt>Groundwater <span class="hud-hint">(diagram ribbon)</span></dt>
         <dd id="hud-gw">—</dd>
         <dt>Cachuma</dt>
         <dd id="hud-cachuma">—</dd>
         <dt>State Water</dt>
         <dd id="hud-swp">—</dd>
-        <dt>Recycled (CAPP)</dt>
+        <dt>Recycled (CAPP injection)</dt>
         <dd id="hud-recycled">—</dd>
-        <dt>Supply total</dt>
-        <dd id="hud-supply">—</dd>
+        <dt>Diagram total <span class="hud-hint">(matches image TOTAL)</span></dt>
+        <dd id="hud-diagram-total">—</dd>
+        <dt>UWMP supply total</dt>
+        <dd id="hud-uwmp-supply">—</dd>
         <dt>Demand</dt>
         <dd id="hud-demand">—</dd>
         <dt>Balance</dt>
         <dd id="hud-balance">—</dd>
       </dl>
       <p class="cite" id="hud-cite">Source: UWMP Table 5-x · Projected · Provisional exhibit</p>
+      <p class="cite" id="hud-note"></p>
     </section>
 
     <section class="prose">
@@ -131,6 +134,6 @@
     </div>
   </footer>
 
-  <script src="../js/planning.js?v=3" defer></script>
+  <script src="../js/planning.js?v=4" defer></script>
 </body>
 </html>
